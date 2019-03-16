@@ -1,0 +1,1805 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜球赢欧派</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="猜球赢欧派">
+    <link rel="stylesheet" type="text/css" href="../addons/uber_guess/template/mobile/default/css/animate.css">
+    <link rel="stylesheet" href="../addons/uber_guess/template/mobile/default/css/bootstrap.min.css">  
+    
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript">
+	window.sysinfo = window.sysinfo || {"uniacid":1,"acid":"1","siteroot":"https:\/\/7002.fmxcx0513.com\/","siteurl":"https:\/\/7002.fmxcx0513.com\/app\/index.php?i=1&c=entry&rid=14&do=index&m=uber_guess","attachurl":"https:\/\/7002.fmxcx0513.com\/attachment\/","cookie":{"pre":"b127_"},"MODULE_URL":"https:\/\/7002.fmxcx0513.com\/addons\/uber_guess\/"} || {};
+	
+	// jssdk config 对象
+	jssdkconfig = null || {};
+	
+	// 是否启用调试
+	jssdkconfig.debug = false;
+	
+	jssdkconfig.jsApiList = [
+		'checkJsApi',
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage',
+		'onMenuShareQQ',
+		'onMenuShareWeibo',
+		'hideMenuItems',
+		'showMenuItems',
+		'hideAllNonBaseMenuItem',
+		'showAllNonBaseMenuItem',
+		'translateVoice',
+		'startRecord',
+		'stopRecord',
+		'onRecordEnd',
+		'playVoice',
+		'pauseVoice',
+		'stopVoice',
+		'uploadVoice',
+		'downloadVoice',
+		'chooseImage',
+		'previewImage',
+		'uploadImage',
+		'downloadImage',
+		'getNetworkType',
+		'openLocation',
+		'getLocation',
+		'hideOptionMenu',
+		'showOptionMenu',
+		'closeWindow',
+		'scanQRCode',
+		'chooseWXPay',
+		'openProductSpecificView',
+		'addCard',
+		'chooseCard',
+		'openCard'
+	];
+	
+	wx.config(jssdkconfig);
+	
+</script> 
+    <script src="../addons/uber_guess/template/mobile/default/js/jquery.min.js"></script>
+    <script src="../addons/uber_guess/template/mobile/default/js/bootstrap.min.js"></script>
+    <script src="../addons/uber_guess/template/mobile/default/js/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../addons/uber_guess/template/mobile/default/js/sweetalert/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="../addons/uber_guess/template/mobile/default/js/sweetalert/swal.css">
+    
+<style>
+body{padding:0;margin:0;background-image:url("https://7002.fmxcx0513.com/addons/uber_guess/template/mobile/default/images/soccer/bet_bg.jpg");background-repeat:repeat-y;background-position:top;background-size:contain;font-size:16px;line-height:1.6;}
+a{text-decoration:none}
+img{display:block}
+.nav-bar{width:100%;height:36px;background-color:#f2b809;color:#FFF;font-size:15px;line-height:36px;text-align:center}
+.nav-bar a{color:#FFF}
+.nav-button{float:left;width:25%}
+.nav-line{height:26px;line-height:26px;margin-top:5px;border-left:1px solid #cc9b08;border-right:1px solid #cc9b08}
+.user-bg{width:100%;height:118px;background-image:url("https://7002.fmxcx0513.com/addons/uber_guess/template/mobile/default/images/soccer/user_bg.jpg");background-repeat:repeat-x;background-position:bottom;background-size:cover;overflow:hidden}
+.user-info{width:100%;height:32px;line-height:32px;margin-top:13px}
+#user-avator{float:left;width:32px;height:100%;margin-left:7px;border-radius:50%;overflow:hidden}
+#user-name{float:left;max-width:130px;height:100%;color:#FFF;font-size:13px;margin-left:12px}
+.user-credit{float:left;margin-left:12px;margin-top:2px}
+.credit-icon{float:left;height:13px;margin-top:9px;margin-right:3px;line-height:100%}
+#user-credit{float:left;font-size:12px;color:#ffd041}
+.user-beer{float:left;margin-left:10px;margin-top:2px}
+.beer-icon{float:left;height:18px;margin-top:6px;margin-right:3px;line-height:100%}
+#user-beer{float:left;font-size:12px;color:#ffd041}
+#rule-button{float:right;height:22px;padding:0 5px 0 5px;font-size:15px;line-height:22px;border:1px solid #ffd041;border-radius:4px;color:#ffd041;margin-right:10px;margin-top:5px}
+.rolling-info{width:90%;height:48px;border-radius:4px;overflow:hidden;position:relative;margin:10px auto 0 auto}
+#rolling-info{position:absolute;top:0;left:0;width:100%;height:100%;font-size:14px;line-height:22px;color:#FFF;text-align:center;padding-top:2px;}
+#rolling-info p{margin:0} #rolling-info img{width:16px;height:16px;vertical-align:middle;display:inline;border-radius:50%;}
+#bet_banner{height:auto;}
+.rolling-info-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#000;opacity:.5}
+.bet-list{width:100%;min-height:300px;padding-bottom:65px;overflow:hidden}
+.bet-item{width:96%;height:112px;margin:12px auto 0 auto;position:relative;border-radius:4px;overflow:hidden}
+.bet-item-bg{background-color:#FFF;opacity:.7;width:100%;height:100%;position:absolute;top:0;left:0}
+.bet-item-content{width:100%;height:100%;position:absolute;top:0;left:0}
+.bet-item-img{float:left;height:100%;width:90%}
+.bet-item-img img{width:90%;max-height:100px;margin:10px auto 0 auto;display:block}
+.bet-button{float:left;height:100%;width:10%;color:#FFF;font-size:17px;line-height:22px}
+.bet-button.bet{background-color:#007130;padding:26px 0 0 0;line-height:30px;text-align:center}
+.bet-button.rebet{background-color:#f2b809;padding:26px 0 0 0;line-height:30px;text-align:center}
+.bet-button.startbet{background:#11388E;line-height:25px;padding:20px 0 0 0;text-align:center}
+.bet-button.endbet{background:#999;line-height:25px;padding:20px 0 0 0;text-align:center}
+.team-detail-1{float:left;width:28%;margin:12px 0 0 8%;text-align:center}
+.team-detail-vs{float:left;width:24%;margin:12px 0 0 2%;text-align:center;font-size:12px;line-height:18px}
+.team-detail-2{float:left;width:28%;margin:12px 0 0 2%;text-align:center}
+.team-name{font-size:14px;height:26px;line-height:26px;font-weight:700}
+.team-vs-icon{font-size:20px;color:#dc0000;line-height:24px} .team-vs-icon i{font-style:normal;margin-right:.3em;font-size:24px;font-weight:700;}.team-vs-icon cite{font-style:normal;margin-left:.3em;font-size:24px;font-weight:700;}
+.team-detail-1 img{width:100%;max-height:100px;margin:0;display:block;max-height:64px;}
+.team-detail-2 img{width:100%;max-height:100px;margin:0;display:block;max-height:64px;}
+.team-flag{box-shadow:2px 2px 6px #888}
+.bet-prize-info{width:100%;margin-top:12px}
+.bet-prize-info img{width:96%;margin:12px auto 0 auto;border-radius:5px;}.user-creditbtn a{border-radius: 4px;height:22px;line-height:22px;font-size:15px;display:inline;color:#EFB609;border:1px solid #EFB609;padding:2px 5px;}  .user-creditbtn a:hover{text-decoration:none;} 
+.tips_list{width: 100%;position: fixed;z-index: 30;height: 100%;top:0;left: 0;}
+.tips_list .optity{width: 100%;height: 100%;z-index: 15;background: #000;opacity: 0.7;}
+.tips_list .pp{width: 100%;z-index: 40;margin-top: 20%;z-index: 40;}
+.tips_list .pp>img{width: 100%;position: absolute;top:0;z-index: 50}
+.tips_list .pp>i{width: 30px;height: 30px;display:block;background:url("../addons/uber_guess/template/mobile/default/bet/images/close.png?v=20160602") no-repeat;position: absolute;top:25%;right: 5%;background-size:100%;z-index: 20; }
+.tips_list .prize{position: absolute;top:16%;left: 0%;width: 100%;box-sizing:border-box;padding:0 12%;background: url("../addons/uber_guess/template/mobile/default/bet/images/prize.png?v=20160602") no-repeat;background-size: 100%;height: 300px;}
+.tips_list .prize.not{background: url("../addons/uber_guess/template/mobile/default/bet/images/prizew.png?v=20160602") no-repeat;background-size: 100%;}
+.tips_list .prize.not dd{color: #333;margin-top: 40px}
+.tips_list  h2{text-align: center;margin-bottom: 10%;font-size: 1.3em;padding-top: 43.5%;}
+.tips_list .prize dl dd{ position: relative; padding:3% 0;}
+.tips_list .prize dl dd .img { width: 50px; height: 50px; float: left; margin-right: 9%; margin-left: 0%;}
+.tips_list .prize dl dd img{width: 15%;display: inline-block;padding-right: 15%;}
+.tips_list .prize dl dd h4{width:47%; display: inline-block;color: #333;vertical-align: top;}
+.tips_list .prize dl dd h4 span{color: #333;display: block;font-weight: normal; line-height: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.tips_list .prize dl dd a{ position: absolute; top: 50%; margin-top: -14px;color: #999;border:solid 1px #999;padding: 1% 0%;display: inline-block;vertical-align: 13px;border-radius: 20px;width: 20%;text-align: center;vertical-align: 25px;}
+.tips_list .prize dl dd h4 span.length8{margin-top: 0;}
+.tips_list .prize dl dd a.hover{border: solid 1px #ed3f41;color: #ed3f41;}
+.tips_info .notice{position: absolute;top:0%;left: 0%;width:100%;padding:0 12%;z-index: 11;overflow: hidden;color:#fff;}
+.tips_info{position: fixed;top:0;left: 0;z-index: 30;width: 100%;height:100%;}
+.tips_info  h2{text-align: center;margin-bottom: 10%;font-size: 1.3em;margin-top:5px;color:#fff;}
+.tips_info .img_bg{width: 100%;height: 100%;position:relative;}
+.tips_info .img_bg .optity{width: 100%;height: 100%;position: absolute;z-index: 9;background: #000;opacity: 0.7;}
+.tips_info .img_bg img.bg{width: 100%;height:95%;top:0;left: 0;z-index: 10;position: absolute;}
+.tips_info .img_bg img.qiu{width: 30%;top:0;left: 0;z-index: 12;position: absolute;}
+.tips_info>i{width: 30px;height: 30px;display:block;background:url("../addons/uber_guess/template/mobile/default/bet/images/close.png?v=20160602") no-repeat;position: absolute;top:2%;right: 5%;background-size:100%;z-index: 20; }
+.tips_info  h2:nth-of-type(2){margin:5% 0 5% 0;}
+.tips_info .notice h4{font-weight: normal;font-size: 0.9em;line-height:1.4em;}
+.tips_info .notice p{line-height: 1.4em;font-size: 0.9em;}
+.tips_info .notice dl{background: #10336a;height: 80px;border-radius: 3px;}
+.tips_info .notice h5{color: #3d94f6;text-align: center;padding:6% 0 5% 0;font-size: 1.2em;font-weight: normal;}
+.tips_info .notice dl dt{width: 80px;height: 80px;display: inline-block;border-radius: 3px;margin-left: 5px;}
+.tips_info .notice dl dd{display: inline-block;vertical-align: top;width: 60%;padding-top:3%; }
+.tips_info .notice dl dd span{padding-left: 8%;width: 80%;padding-bottom: 2%;display: block;}
+.tips_info .notice .auto{width: 100%;height: 450px;overflow: auto;margin-top: 26%; }
+.tips_info .notice dl{margin-top:15px;}
+.tips_info .notice dl.two{margin-top: 0;}
+.tips_info .notice ul{margin-top: 15px;}
+.tips_info .notice ul li{background: #fff;color: #666;height: 80px;line-height: 80px;margin-top: 15px;color: #666;}
+.tips_info .notice ul li.prize{background-image:url("../addons/uber_guess/template/mobile/default/bet/images/prizebg.png?v=20160602");background-size:100% 100%; }
+.tips_info .notice ul{padding-top: 20px;}
+.tips_info .notice ul li h4{width: 50%;}
+.tips_info .notice ul li h4 span{color: #333;line-height: 10px;}
+.tips_info .notice ul li img{width: 20%;margin-top: 4%;margin-left: 4%;display: inline-block;}
+.tips_info .notice ul li a{color: #333;display: inline-block;width: 30%;float: left;}
+
+.tips_info .prize{width: 100%;box-sizing:border-box;padding:0 12%;position: absolute;top:0;left: 0;z-index: 11;}
+.tips_info .prize.not{background: url("../addons/uber_guess/template/mobile/default/bet/images/prizew.png?v=20160602") no-repeat;background-size: 100%;}
+.tips_info .prize.not dd{color: #333;margin-top: 40px}
+.tips_info  h2{text-align: center;margin-bottom: 10%;font-size: 1.3em;}
+.tips_info .prize .bgCon {padding:3.5% 0 2.5% 0;}
+.tips_info .prize dl dd{background:none;color: #333;padding:10px 0 10px 0;margin-top:0px;}
+.tips_info .prize dl dd.bg{ position: relative; height:auto; overflow: hidden; background-image:url("../addons/uber_guess/template/mobile/default/bet/images/prizebg.png");background-size: 100% 100%; border-radius: 3px;}
+.tips_info .prize .bgCon>p { font-size: 14px; color: #7ca2e1;}
+.tips_info .prize .bgCon>p em { margin: 0 4px;font-size: 12px; color: #7ca2e1; font-style: normal;}
+.tips_info .prize dl dd .img { width: 50px; height: 50px; float: left; margin-right: 8%; margin-left: 5%;}
+.tips_info .prize dl dd img{width: 15%;display: inline-block;padding-right: 10%;padding-left: 5%;}
+.tips_info .prize dl dd h4{width:44%; display: inline-block;color: #333;vertical-align: top;}
+.tips_info .prize dl dd h4 span{ line-height: 25px; color: #333;display:block;font-weight: normal;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.tips_info .prize dl dd a{ position: absolute; top: 50%; margin-top: -14px;color: #999;border:solid 1px #999;padding: 3px 0;display: inline-block;border-radius: 20px;width: 20%;text-align: center;vertical-align: 11px;}
+.tips_info .prize dl dd h4 span.length8{margin-top: 0;}
+.tips_info .prize dl dd a.hover{border: solid 1px #ed3f41;color: #ed3f41;}
+.tips_info .prize .auto{width: 100%;height: 450px;overflow: auto;margin-top: 26%;}
+@media screen and (max-width:320px){.tips_list .prize dl dd{padding:0}.user-creditbtn a{font-size:9pt;padding:2px 5px}#rule-button{font-size:9pt;margin-right:8px;margin-top:7px}.tips_info .notice .auto,.tips_info .prize .auto{margin-top:23%}}@media screen and (min-width:321px) and (max-width:360px){.tips_info .notice .auto,.tips_info .prize .auto{margin-top:23%}}@media screen and (min-width:361px) and (max-width:375px){.tips_info .notice .auto,.tips_info .prize .auto{margin-top:24%}}@media screen and (min-width:376px) and (max-width:384px){.tips_info .notice .auto,.tips_info .prize .auto{margin-top:25%}}@media screen and (min-width:385px) and (max-width:412px){.tips_info .notice .auto,.tips_info .prize .auto{margin-top:26%}}@media screen and (min-width:413px) and (max-width:414px){.tips_info .notice .auto,.tips_info .prize .auto{margin-top:26%}}
+</style>
+    <script>
+        var score = 0;
+        var lotteryList = false;
+        var lotteryShowDeltaTime = 5000;
+        var lotteryShowTimer;
+        var currentLotteryListNum = 0;
+        var hasMessage = 0;
+        var subscribe = 0;
+        var firstJoin = 0;
+        var messageShown = 0;
+        function init() {            
+        }        
+        $(document).ready(function () {
+            init();
+
+            lotteryList = $('#rolling-info div');
+
+            if (lotteryList.length > 0) {
+                lotteryShowTimer = setTimeout("scrollLotteryList()",lotteryShowDeltaTime);
+            }
+            else {
+                $('.rolling-info').hide();
+                $('.user-bg').css('height','70px');
+            }
+
+            if (sessionStorage.messageShown) {
+                messageShown = sessionStorage.messageShown;
+            }
+
+            if (hasMessage && !messageShown) {
+                messageShown = 1;
+                sessionStorage.messageShown = messageShown;
+                $('#message-modal').modal('show');
+            }
+
+            if (firstJoin && !messageShown) {
+                messageShown = 1;
+                sessionStorage.messageShown = messageShown;
+                $('#first-modal').modal('show');
+            }
+            
+        })
+        function joinBet(matchid) {			
+			if("0"==0)subscribe=1;
+            if (subscribe) {
+                if (score >= 10) {
+                    location.href="./index.php?i=1&c=entry&rid=14&op=display&do=bet&m=uber_guess&matchid="+matchid;
+                }
+                else {
+					swal({title:'积分不足，无法继续投注',text:'可以通过积分签到和分享获取积分',type:"error",customClass: 'swalclass',confirmButtonColor:"#db3652", confirmButtonText: "确认"});
+							return false;
+                }
+            } else if("4"==4){
+                $('#qr-modal').modal('show');
+            }
+
+            
+        }
+
+        function showrule() {
+            $('#rule-modal').show();
+        }
+
+        function scrollLotteryList() {
+            //var itemHeight = $('#lottery-item-'.currentLotteryListNum).height();
+            var posY = $('#rolling-info').position().top-22;
+            //console.log($('#lottery-item-'.currentLotteryListNum).height());
+            if (currentLotteryListNum >= lotteryList.length - 1) {
+                currentLotteryListNum = 0;
+                $('#rolling-info').animate({'top':0},500);
+            }
+            else {
+                currentLotteryListNum++;
+                $('#rolling-info').animate({'top':posY},500);
+            }
+            lotteryShowTimer = setTimeout("scrollLotteryList()",lotteryShowDeltaTime);
+        }
+
+        function dismissFirstModal() {
+            $('#first-modal').modal('hide');
+        }
+		function integralSignin() {
+			var openid = "";
+			var rid = "14";			
+			if(openid){
+			swal({title: "您确认签到吗？", type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",  confirmButtonText: "确认",cancelButtonText: '取消', customClass: 'swalclass', closeOnConfirm: false }, function(){
+					$(".sa-confirm-button-container .confirm").addClass('disabled').attr('disabled', true);  
+					$.post("./index.php?i=1&c=entry&op=betsignin&do=index&m=uber_guess", {'rid':rid}, function(data) {
+						var data = $.parseJSON(data);
+						if(data.status == 1) {
+							$(".sa-confirm-button-container .confirm").removeClass('disabled').attr('disabled', false); 
+							var gotourl = "./index.php?i=1&c=entry&rid=14&op=display&do=index&m=uber_guess";
+					    	swal({title: "恭喜您签到成功！",text:''+data.message+'', type: "success",customClass: 'swalclass',confirmButtonColor:"#db3652",confirmButtonText: "确认" },function(){window.location.href=gotourl;});
+						}else {
+							$(".sa-confirm-button-container .confirm").removeClass('disabled').attr('disabled', false); 
+							swal({title:'积分签到失败啦！',text:''+data.message+'',type:"error",customClass: 'swalclass',confirmButtonColor:"#db3652", confirmButtonText: "确认"});
+							return false;
+						}
+					});
+				});
+			}
+        }
+		function showLotteryRecord() {
+            $('#lotteryRecord').show();	
+        }
+		function showMyLotteryRecord() {
+            $('#myLotteryRecord').show();	
+        }
+		function showAllLotteryRecord() {
+            $('#allLotteryRecord').show();	
+        }
+    </script>
+</head>
+<body>
+
+<link rel="stylesheet" href="../addons/uber_guess/template/mobile/default/css/swiper.min.css">
+<style>.swiper-pagination-bullet{opacity:1;background:none;border:2px solid #fff;}.swiper-pagination-bullet-active{background:#fff;}.swiper-container{height:180px;max-height:320px;}.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{}
+/*媒体查询*/
+@media screen and (max-width:319px){.swiper-container .swiper-slide img{height:10pc;max-height:20pc}}@media screen and (min-width:320px) and (max-width:359px){.swiper-container .swiper-slide img{height:10pc;max-height:20pc}}@media screen and (min-width:360px) and (max-width:374px){.swiper-container .swiper-slide img{height:180px;max-height:20pc}}@media screen and (min-width:375px) and (max-width:383px){.swiper-container .swiper-slide img{height:188px;max-height:20pc}}@media screen and (min-width:384px) and (max-width:392px){.swiper-container .swiper-slide img{height:2in;max-height:20pc}}@media screen and (min-width:393px) and (max-width:410px){.swiper-container .swiper-slide img{height:197px;max-height:20pc}}@media screen and (min-width:411px) and (max-width:413px){.swiper-container .swiper-slide img{height:206px;max-height:20pc}}@media screen and (min-width:414px) and (max-width:451px){.swiper-container .swiper-slide img{height:207px;max-height:20pc}}@media screen and (min-width:452px) and (max-width:479px){.swiper-container .swiper-slide img{height:226px;max-height:20pc}}@media screen and (min-width:480px) and (max-width:640px){.swiper-container .swiper-slide img{height:15pc;max-height:20pc}}
+</style>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="#"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/b7n5oghgSgshGi5ZQ7M5No4kOh57H4.png" width="100%"></a></div>
+      </div>
+  <div class="swiper-pagination"></div>
+</div>
+<script src="../addons/uber_guess/template/mobile/default/js/swiper.min.js"></script>
+<script>
+var swiper=new Swiper('.swiper-container',{pagination:'.swiper-pagination',paginationClickable:true,spaceBetween:10,centeredSlides:true,autoplay:5000,autoplayDisableOnInteraction:false});
+</script>     
+   
+    <div class="nav-bar">
+        <div class="nav-button">
+            <a onclick="showrule();">活动规则</a>
+        </div>
+        <div class="nav-button">
+            <div class="nav-line">
+                <a href="./index.php?i=1&c=entry&rid=14&op=display&do=rank&m=uber_guess">积分榜</a>
+            </div>
+        </div>
+        <div class="nav-button">
+        <div class="nav-line" style="border-left:0;">      
+            <a href="javascript:;" onclick="showLotteryRecord();">中奖记录</a>        </div>
+        </div>
+        <div class="nav-button">            
+            <a href="javascript:;" onclick="showMyLotteryRecord();">我的竞猜</a>
+        </div>
+    </div>
+    <div class="user-bg">
+        <div class="user-info">
+            <div id="user-avator">
+                <img src="" width="100%">
+            </div>
+            <div id="user-name">
+                </div>
+            <div class="user-credit">
+                <div class="credit-icon"><img src="../addons/uber_guess/template/mobile/default/images/soccer/credit_icon.png" height="100%"></div>
+                <div id="user-credit">0分</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="user-beer">
+                <div class="beer-icon"></div>
+                <div id="user-beer" class="user-creditbtn"><a href="javascript:void(0);" onClick="integralSignin()">积分签到</a></div>
+                <div style="clear:both;"></div>
+            </div>
+        <div class="user-beer" "><a href="javascript:void(0);" onclick="showShare();" style="margin-left:.1em;height:23px;line-height:23px;font-size:15px;border-radius:4px;background:#ff5722;color:#fff;border:1px solid #ff5722;padding:2px 5px;">邀请好友</a></div>
+        </div>
+        <div class="rolling-info" onclick="return false;">
+            <div class="rolling-info-bg"></div>
+            <div id="rolling-info">
+            	                                <div id="lottery-item-0" list-num="0"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="16" height="16"> 心的开始 下注1分，猜乌拉圭赢</div>
+                                <div id="lottery-item-1" list-num="1"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="16" height="16"> 心的开始 下注1分，猜英格兰赢</div>
+                                <div id="lottery-item-2" list-num="2"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="16" height="16"> 心的开始 下注1分，猜瑞士赢</div>
+                                <div id="lottery-item-3" list-num="3"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="16" height="16"> 心的开始 下注2分，猜日本赢</div>
+                                <div id="lottery-item-4" list-num="4"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="16" height="16"> 心的开始 下注1分，猜巴西赢</div>
+                                <div id="lottery-item-5" list-num="5"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="16" height="16"> 沫去～记... 下注1分，猜巴西赢</div>
+                                <div id="lottery-item-6" list-num="6"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="16" height="16"> 沫去～记... 下注1分，猜比利时vs日本平</div>
+                                <div id="lottery-item-7" list-num="7"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="16" height="16"> 沫去～记... 下注1分，猜瑞典赢</div>
+                                <div id="lottery-item-8" list-num="8"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="16" height="16"> 沫去～记... 下注1分，猜英格兰赢</div>
+                                <div id="lottery-item-9" list-num="9"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="16" height="16"> 沫去～记... 下注1分，猜法国赢</div>
+                                <div id="lottery-item-10" list-num="10"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNRSMJ7GO8rQx7ZcsMfFeiaftFIKwbnGR1j93KNZ1sx2vupdgTFiahibry80luyibbFx494z9jRAkB1xuzibJYSyADLlb/132" width="16" height="16"> 季利 下注1分，猜比利时vs日本平</div>
+                                <div id="lottery-item-11" list-num="11"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNRSMJ7GO8rQx7ZcsMfFeiaftFIKwbnGR1j93KNZ1sx2vupdgTFiahibry80luyibbFx494z9jRAkB1xuzibJYSyADLlb/132" width="16" height="16"> 季利 下注2分，猜巴西赢</div>
+                                <div id="lottery-item-12" list-num="12"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJDlz2EucOXSoYLX24rCMdWiaiaibyBAWlpGy8oaDhFibfmcfbtS1DPv4lXJgicZia6PD4PuWJYCYEghSMQ/132" width="16" height="16"> 心若像风... 下注9分，猜比利时赢</div>
+                                <div id="lottery-item-13" list-num="13"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJDlz2EucOXSoYLX24rCMdWiaiaibyBAWlpGy8oaDhFibfmcfbtS1DPv4lXJgicZia6PD4PuWJYCYEghSMQ/132" width="16" height="16"> 心若像风... 下注1分，猜巴西赢</div>
+                                <div id="lottery-item-14" list-num="14"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/icV5chQTTje1TZ5TNicGFOTicJx72gICgZXUxO1xQKb81Pibwdrw7rAiamnlichQI8ZKx7UDOTIwkKmrfknCicllCicJqw/132" width="16" height="16"> 敏敏 下注1分，猜法国赢</div>
+                                <div id="lottery-item-15" list-num="15"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoqV4knJupHGIDNKnnWgLnL0L5azzn1cyEj3yeZ4LdwtGVX1H6D0Pb9qDAYwvcD2wMhYTTS7h3Lkw/132" width="16" height="16"> 顺峰 下注10分，猜巴西赢</div>
+                                <div id="lottery-item-16" list-num="16"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="16" height="16"> 雪妮 下注10分，猜英格兰赢</div>
+                                <div id="lottery-item-17" list-num="17"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="16" height="16"> 雪妮 下注5分，猜瑞士赢</div>
+                                <div id="lottery-item-18" list-num="18"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="16" height="16"> 雪妮 下注5分，猜日本赢</div>
+                                <div id="lottery-item-19" list-num="19"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="16" height="16"> 康遴祺 下注1分，猜瑞典赢</div>
+                                <div id="lottery-item-20" list-num="20"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="16" height="16"> 康遴祺 下注1分，猜比利时赢</div>
+                                <div id="lottery-item-21" list-num="21"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="16" height="16"> 康遴祺 下注58分，猜巴西赢</div>
+                                <div id="lottery-item-22" list-num="22"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="16" height="16"> 雪妮 下注15分，猜法国赢</div>
+                                <div id="lottery-item-23" list-num="23"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="16" height="16"> 钟立地 下注10分，猜乌拉圭赢</div>
+                                <div id="lottery-item-24" list-num="24"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="16" height="16"> 雪妮 下注5分，猜墨西哥赢</div>
+                                <div id="lottery-item-25" list-num="25"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="16" height="16"> 钟立地 下注20分，猜英格兰赢</div>
+                                <div id="lottery-item-26" list-num="26"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="16" height="16"> 钟立地 下注8分，猜瑞典赢</div>
+                                <div id="lottery-item-27" list-num="27"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="16" height="16"> 钟立地 下注11分，猜日本赢</div>
+                                <div id="lottery-item-28" list-num="28"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="16" height="16"> 钟立地 下注21分，猜墨西哥赢</div>
+                                <div id="lottery-item-29" list-num="29"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLnIE9t5OrSDkOSHvO03swN7UQl3WcCkMHvk7icIibibNkRM6THEJvBRImpYgWic5QI97X8LHia660OERg/132" width="16" height="16"> 吴亚丽&... 下注5分，猜法国赢</div>
+                                
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="bet-list">
+    		                       <div class="bet-item" id="bet-item-284" onclick="joinBet(284);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/06/v0WXNjNKwfHZDUlhqn0mJH5ujDWp5x.png" width="100%"></div>
+                        <div class="team-name">乌拉圭</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon"> <i>2</i>VS<cite>1</cite></div>
+                        <div class="match-date">2018-07-01</div>
+                        <div class="match-time">02:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/06/uP1PpAp3V3YDuVREV3EEV7uivuII1P.png" width="100%"></div>
+                        <div class="team-name">葡萄牙</div>
+                    </div>
+                </div>
+                                	                    <div class="bet-button endbet">已<br>开<br>奖</div>
+                	            
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-285" onclick="joinBet(285);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/SgZdgZ9hzZ5hSSsPKk55GQ9EMWdnss.png" width="100%"></div>
+                        <div class="team-name">西班牙</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon"> <i>4</i>VS<cite>5</cite></div>
+                        <div class="match-date">2018-07-01</div>
+                        <div class="match-time">22:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/06/YF9PF1RZs91uzFq0085p5o0f99oZA2.png" width="100%"></div>
+                        <div class="team-name">俄罗斯</div>
+                    </div>
+                </div>
+                                	                    <div class="bet-button endbet">已<br>开<br>奖</div>
+                	            
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-286" onclick="joinBet(286);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/NoA8nOpG2OA0AnRa9AA9N09Q89RaZt.png" width="100%"></div>
+                        <div class="team-name">克罗地亚</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon"> <i>4</i>VS<cite>3</cite></div>
+                        <div class="match-date">2018-07-02</div>
+                        <div class="match-time">02:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/Z2E4jZL7llzR02E46h4Ch3lJ25R7Rl.png" width="100%"></div>
+                        <div class="team-name">丹麦</div>
+                    </div>
+                </div>
+                                	                    <div class="bet-button endbet">已<br>开<br>奖</div>
+                	            
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-287" onclick="joinBet(287);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/xmsDpb8vmTDt0YV8tsgy0SVTUMD4mS.png" width="100%"></div>
+                        <div class="team-name">巴西</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon">VS</div>
+                        <div class="match-date">2018-07-02</div>
+                        <div class="match-time">22:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/JKXzNwk390X5fNKR9VvvMrN9WTFfv4.png" width="100%"></div>
+                        <div class="team-name">墨西哥</div>
+                    </div>
+                </div>
+                                	                 			<div class="bet-button rebet">加<br>注</div>                                
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-288" onclick="joinBet(288);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/Z196S3pux5rbQS1uC6kr193rLr6RS6.png" width="100%"></div>
+                        <div class="team-name">比利时</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon">VS</div>
+                        <div class="match-date">2018-07-03</div>
+                        <div class="match-time">02:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/b6g2068N80Sz828nNSmmz8n68s68gs.png" width="100%"></div>
+                        <div class="team-name">日本</div>
+                    </div>
+                </div>
+                                	                 			<div class="bet-button rebet">加<br>注</div>                                
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-291" onclick="joinBet(291);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/KYI9BGKb9OkkcU7d2wbCh47GH2k71u.png" width="100%"></div>
+                        <div class="team-name">瑞典</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon">VS</div>
+                        <div class="match-date">2018-07-03</div>
+                        <div class="match-time">22:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/ZppHPdAThZzh2DwDA73MhWEWiD7epC.png" width="100%"></div>
+                        <div class="team-name">瑞士</div>
+                    </div>
+                </div>
+                                	                 			<div class="bet-button rebet">加<br>注</div>                                
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-289" onclick="joinBet(289);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/lkz9bYpe4z9e3eS9ZZ4697ACU74sqK.png" width="100%"></div>
+                        <div class="team-name">哥伦比亚</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon">VS</div>
+                        <div class="match-date">2018-07-04</div>
+                        <div class="match-time">02:00:00</div>
+                        <div class="match-address">英格兰</div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/BD5UT6nybN6c2y61DduQ2DAw2aD6n7.png" width="100%"></div>
+                        <div class="team-name">英格兰</div>
+                    </div>
+                </div>
+                                	                 			<div class="bet-button rebet">加<br>注</div>                                
+                </div>
+        </div>
+                               <div class="bet-item" id="bet-item-293" onclick="joinBet(293);">
+            <div class="bet-item-bg"></div>
+            <div class="bet-item-content">
+                <div class="bet-item-img">
+                    <div class="team-detail-1">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/06/v0WXNjNKwfHZDUlhqn0mJH5ujDWp5x.png" width="100%"></div>
+                        <div class="team-name">乌拉圭</div>
+                    </div>
+                    <div class="team-detail-vs">
+                        <div class="team-vs-icon">VS</div>
+                        <div class="match-date">2018-07-06</div>
+                        <div class="match-time">22:00:00</div>
+                        <div class="match-address"></div>
+                    </div>
+                    <div class="team-detail-2">
+                        <div class="team-flag"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/vEKMzuxKvryD1KR1KEVvrktkSXsrTz.png" width="100%"></div>
+                        <div class="team-name">法国</div>
+                    </div>
+                </div>
+                                	                 			<div class="bet-button rebet">加<br>注</div>                                
+                </div>
+        </div>
+        
+        <div style="clear:both;"></div>
+		<div class="bet-prize-info"><a class="ad" href="https://7002.fmxcx0513.com/app/index.php?i=1&c=entry&rid=14&do=index&m=uber_guess"><img src="https://7002.fmxcx0513.com/attachment/images/1/2018/07/gKZBbkABjlo2Vz4CzkAO2KVLDQa1Va.jpg" width="100%;" /></a></div>    </div>
+
+    <!-- Modal -->
+    <style>
+        li { border-bottom: 1px dotted black; list-style-type: none; padding: 15px 6px; }
+        li:last-child { border-bottom: none }
+        .title {float:left; color:#FFF;padding:0;font-size:.9em}
+        .title span {color: yellow}
+
+        .loadmore {
+            height: 40px;
+            line-height: 30px;
+            color: #999;
+            text-align: center;
+            display: block;
+            clear: both;
+        }
+
+        .loadmore .more a {
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            background: #009944;
+            border-radius: 5px;
+            display: block;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        table{width:100%;margin:0px auto;font-size:.85em;}
+        th{padding:10px 5px;border-bottom:1px dotted #ccc; color:#880000;width: 33%;font-size:.85em;}
+        td{padding:10px 0px;border-bottom:1px dotted #ccc; color:#fff; text-align:center;font-size:.85em;}
+        td:nth-child(1)
+        {
+            width: 24%;
+        }
+        td:nth-child(2)
+        {
+            width: 32%;
+        }
+        td:nth-child(3)
+        {
+            width: 44%;
+        }
+		tr:last-child{border-bottom:none;}
+
+		.mybetrecord{color:#fff;}
+        .mybetrecord li { border-bottom: 1px dotted #ccc; list-style-type: none; padding:10px 5px;color:#fff;line-height:1.3em;}
+        .mybetrecord li:last-child { border-bottom: none;color:#fff; }
+        .mybetrecord span {color:#000;font-size:.8em;color:#fff;}
+        .mybetrecord p {border-radius:0px;color:#ffd76a;margin:0px auto;font-weight:bold;padding: 5px 15px;padding-bottom:0;padding-left:6px; background:none; width:100%;font-size:.9em;}
+    </style>
+<style>.mybetrecord .allname{color:#a94442;}.mybetrecord .allname img{width:18px;height:18px;display:inline;border-radius:50%;}</style>
+<div class='tips_info' id="myLotteryRecord" style="display:none;" onClick="$(this).hide();">
+	<div class="img_bg">
+		<div class="optity">
+		</div>
+		<img class='bg' src="../addons/uber_guess/template/mobile/default/bet/images/tips.png?v=201606090253"/><img class='qiu' src="../addons/uber_guess/template/mobile/default/bet/images/qiu.png?v=201606090253"/>
+	</div>
+	<i ng-click="infoPrize()"></i>
+	<div class='prize'>
+		<div class="auto">
+			<h2>我的竞猜</h2>
+			<dl>
+			<div class="mybetrecord">
+    		
+            <!--<p>中奖信息</p>
+                		            <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>克罗地亚vs丹麦下注10分 猜输赢 待派奖</span>
+            </li>
+                        <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>克罗地亚vs丹麦下注1分 猜输赢 待派奖</span>
+            </li>
+                        <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>克罗地亚vs丹麦下注51分 猜输赢 待派奖</span>
+            </li>
+                        <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>克罗地亚vs丹麦下注2分 猜输赢 待派奖</span>
+            </li>
+                        <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>克罗地亚vs丹麦下注11分 猜输赢 待派奖</span>
+            </li>
+                        <li>
+                 <span>恭喜你获得派发竞猜积分一份</span>
+                 <span style="float: right;">2018-07-02</span>
+                 <div style="clear:both;"></div>
+                 <span>西班牙vs俄罗斯下注3分 猜输赢 待派奖</span>
+            </li>
+             -->
+            <p>竞猜记录 <small style="color:#337ab7;font-weight:normal;">90分钟比赛结果含伤停补时</small></p>
+   			    		             <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜乌拉圭赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时vs日本平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时vs日本平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注9分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注58分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注15分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜乌拉圭赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注20分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注8分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注11分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注21分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国 </span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                       
+			</div>
+			</dl>
+
+                    </div>
+                    
+				</div>
+			
+		</div>    
+ <div class='tips_info' id="allLotteryRecord" style="display:none;" onClick="$(this).hide();">
+	<div class="img_bg">
+		<div class="optity">
+		</div>
+		<img class='bg' src="../addons/uber_guess/template/mobile/default/bet/images/tips.png?v=201606090253"/><img class='qiu' src="../addons/uber_guess/template/mobile/default/bet/images/qiu.png?v=201606090253"/>
+	</div>
+	<i ng-click="infoPrize()"></i>
+	<div class='prize'>
+		<div class="auto">
+			<h2>竞猜记录</h2>
+			<dl>
+			<div class="mybetrecord">
+            <p>竞猜记录 <small style="color:#337ab7;font-weight:normal;">90分钟比赛结果含伤停补时</small></p>
+   			    		             <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="100%"> 心的开始</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜乌拉圭赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="100%"> 心的开始</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="100%"> 心的开始</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="100%"> 心的开始</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUNibZseQNvExTe68AhefNLqwJ0Mlzv8iapoJTKBq8ibo20dXsBCoQZ9Uic93fKVHneiaFS2at5lss4lQ/132" width="100%"> 心的开始</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="100%"> 沫去～记忆</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="100%"> 沫去～记忆</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时vs日本平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="100%"> 沫去～记忆</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="100%"> 沫去～记忆</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/MD9sz1hUht899JeZHM9ELEXaVuhnib8dCcuLJa0uVK1v6qtxO5UMTBR2HB9BxzS3JbEuibmhHwDzicF8QGcwwPm3w/132" width="100%"> 沫去～记忆</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNRSMJ7GO8rQx7ZcsMfFeiaftFIKwbnGR1j93KNZ1sx2vupdgTFiahibry80luyibbFx494z9jRAkB1xuzibJYSyADLlb/132" width="100%"> 季利</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时vs日本平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNRSMJ7GO8rQx7ZcsMfFeiaftFIKwbnGR1j93KNZ1sx2vupdgTFiahibry80luyibbFx494z9jRAkB1xuzibJYSyADLlb/132" width="100%"> 季利</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJDlz2EucOXSoYLX24rCMdWiaiaibyBAWlpGy8oaDhFibfmcfbtS1DPv4lXJgicZia6PD4PuWJYCYEghSMQ/132" width="100%"> 心若像风来...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注9分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJDlz2EucOXSoYLX24rCMdWiaiaibyBAWlpGy8oaDhFibfmcfbtS1DPv4lXJgicZia6PD4PuWJYCYEghSMQ/132" width="100%"> 心若像风来...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/icV5chQTTje1TZ5TNicGFOTicJx72gICgZXUxO1xQKb81Pibwdrw7rAiamnlichQI8ZKx7UDOTIwkKmrfknCicllCicJqw/132" width="100%"> 敏敏</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoqV4knJupHGIDNKnnWgLnL0L5azzn1cyEj3yeZ4LdwtGVX1H6D0Pb9qDAYwvcD2wMhYTTS7h3Lkw/132" width="100%"> 顺峰</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="100%"> 雪妮</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="100%"> 雪妮</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="100%"> 雪妮</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="100%"> 康遴祺</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="100%"> 康遴祺</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="100%"> 康遴祺</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注58分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="100%"> 雪妮</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注15分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="100%"> 钟立地</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜乌拉圭赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/K19lRoXliaXFibdXNKHpiczZrliayZA40kHLzKRVUYnjlqVvVLgrdgic27ZZVZDXDhonbIq8K5MXVzcDf2fVziaP5icjA/132" width="100%"> 雪妮</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="100%"> 钟立地</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注20分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="100%"> 钟立地</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注8分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="100%"> 钟立地</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注11分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erC0Eto5QhW3VDLbfNOzicGia9zYtCE31McwIJRjtOTb3Eyx2wYmmLVIiaOqPJmUBrOpwxibMUXTSlH7w/132" width="100%"> 钟立地</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注21分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLnIE9t5OrSDkOSHvO03swN7UQl3WcCkMHvk7icIibibNkRM6THEJvBRImpYgWic5QI97X8LHia660OERg/132" width="100%"> 吴亚丽&无...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLnIE9t5OrSDkOSHvO03swN7UQl3WcCkMHvk7icIibibNkRM6THEJvBRImpYgWic5QI97X8LHia660OERg/132" width="100%"> 吴亚丽&无...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜哥伦比亚赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLDzdeJhbEbP2icR52B50V50KqD1JoEykiauyraZ84y82icT9iaicZZzzK3MZbMlZTiahLkkPtfnFURcAo4Q/132" width="100%"> </b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epqnFrIDeHzdKPPcico5ACNURMrMOcwA2ybOov29XJphzDX9EG5MAyHx4ibu69deTiaKxlzV2EhpfYkQ/132" width="100%"> 爱丸子六六</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL4R6hN3U4rTs2xdicnVOmubmfcYnRQ5loSnAnDeBNg4wn7qEuPniarbtibgnom3x98eOiae9DRicqV2nQ/132" width="100%"> 欧派全屋定...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL4R6hN3U4rTs2xdicnVOmubmfcYnRQ5loSnAnDeBNg4wn7qEuPniarbtibgnom3x98eOiae9DRicqV2nQ/132" width="100%"> 欧派全屋定...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL4R6hN3U4rTs2xdicnVOmubmfcYnRQ5loSnAnDeBNg4wn7qEuPniarbtibgnom3x98eOiae9DRicqV2nQ/132" width="100%"> 欧派全屋定...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epib1LBw66J0Pbp8Z3I7b1ugHl3638cEgKKNnWO4LmhIvFey4fhgUJUo6341Y2VBc72OI775VmzFHw/132" width="100%"> 郝允甡</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIJbcMd2bBgcicDICERMVZaiatocbk71kT4npicULzfh6WMhCLRCEU4XOm2WKjY1KR6WLeKrrSQ3PzTA/132" width="100%"> 不离不弃</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEKS81IJfPmZNYtiatbLGYEUL7uCwlyfK1bicEyMdQjHNu8ZgxFPrVfmRREAhgHsHkW2xILzIqYV4vicQ/132" width="100%"> 仲美琴</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注5分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEKS81IJfPmZNYtiatbLGYEUL7uCwlyfK1bicEyMdQjHNu8ZgxFPrVfmRREAhgHsHkW2xILzIqYV4vicQ/132" width="100%"> 仲美琴</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西vs墨西哥平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKoqSdicVy0FP5Wcoibs84Ss2QV0SnDlIibF8xhnO6eh7aqNficmuXnZyVzZQAf12HmqtJBttJrGQZWyw/132" width="100%"> 蝉</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLe9NH7m00ZYdsMQ0Y85ruaa9HwjBOXbtXUrrMfCzjv9YKia5Sh7FT3DbaOQrcd097zNjt98nXrPoA/132" width="100%"> 毒药</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西vs墨西哥平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJayib1ZcRfOajiaQ50MjmEqpHI8QFIywgOmRSFIMJcEh5MSob1GAvaMQH0qlASxBYibFfXVHyepLZng/132" width="100%"> 发哥</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/55Vo7AypySaTvaRL9uibBfySvkmgD32qicWKZM8HW0IlOvcDA52arsCIaT8OAmGM0we6Fb5tKogWp83wuERf3g8w/132" width="100%"> 欧派-魏闯</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注130分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLE2QyU4WvFibccEyOZDszJmMeeUUtb7ciaC93JibZ49rHibSsTP11RI3Ow35tibWlmgn8jWd0HEZ6HnTg/132" width="100%"> 水晶</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/55Vo7AypySaTvaRL9uibBfySvkmgD32qicWKZM8HW0IlOvcDA52arsCIaT8OAmGM0we6Fb5tKogWp83wuERf3g8w/132" width="100%"> 欧派-魏闯</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLq3wPGic2ibDT1V1gNIdrO9VnRVh8kQdGIHlibesczW60cIu2hib65DYp8GicEdmVw1SzrUUOSkp5Claw/132" width="100%"> </b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/jkuMPFt3uF7dclcKSnaWG98woNH8ibY9Ehd0Sf7cibsXJsh52bw2q6BlqfLvDvicpibFGWr9CHDia8N57XIxnLs0pnA/132" width="100%"> 纤纤玉</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/fE4KQZ3xpRFHZZ6hRCQJAibvXwiayib0kRP7cE1235gNeGoZGGGVVWutr9PMxgZ39Kbv6Ww2Sm7yhEpNY3FkBOvkTqcNG47q9tP/132" width="100%"> 欧派橱柜徐...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJXUWWksBsvTwOyLNjA2ibvaVrDBpE64YYB6HET3KWNicHSEk6bzqCfb27OwPzP5HSWgdcZQAicaE2Vg/132" width="100%"> 太平保险_...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注8分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJXUWWksBsvTwOyLNjA2ibvaVrDBpE64YYB6HET3KWNicHSEk6bzqCfb27OwPzP5HSWgdcZQAicaE2Vg/132" width="100%"> 太平保险_...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqR1uIibq33Kr2HygFHRjFExpO9fFXbpoLcrzavssAqx0LYzVRLuEZ4xQLrBicRUQgFa8erZ6iaoe5icw/132" width="100%"> 宇娟</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIExJX9p24hhws3Dz3eVzPbnZQOjoa9ic1aiaGJg9wL5LKbxgMzhp4tXXILj2c1goibhEr7P3Pj4vsZg/132" width="100%"> 群群138...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIsIdvCPAJQwgMo1K0uP1c0PVfChHNKK2jPsb9VFKWdWIwvjBUtVr9icicEL4bJ9loeblcWHmBvqWlw/132" width="100%"> 科勒王丹丹</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq7tRcZfvGDCqfDPlbmxOiakiawLkM1Iuib8OzuFyeDd3yuo2jgB642UwZpZmQnp1y3BbQibxFq5aWXuQ/132" width="100%"> 程  轩</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIxU3HQoTdhGSdWTAEmiccg1EPDwVhlkkuohQINXLwYouyqcMD4bs9jJM4V5a48Pmag1yeueNMqvoQ/132" width="100%"> AAA迷失...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ericpXShfpaTstSrUR1L4q8t6iaym9xw0KfhEdm0JAzpm6YJiczpSvVCYvLOfxqZeMgwOtCGY7Upay3Q/132" width="100%"> 佳贤网络1...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/G576p9L1rE7hcY49MPZk5Qm3kErlLfibGmQj7eQJcVYjTjBZEbHXIpLBfWbRSaXIRgpomrHum3rpXLbvbAxcDCScj15kvPjAZ/132" width="100%"> 僵小鱼</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注128分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eribGKmVpt9iaosyF8Snibalzo9W97MfdUXaQ5NqUVoawe0nmQeDac8akiavt8QxFT5JarxhAMSU36pGw/132" width="100%"> 奈何</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜哥伦比亚赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eribGKmVpt9iaosyF8Snibalzo9W97MfdUXaQ5NqUVoawe0nmQeDac8akiavt8QxFT5JarxhAMSU36pGw/132" width="100%"> 奈何</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜瑞士赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eribGKmVpt9iaosyF8Snibalzo9W97MfdUXaQ5NqUVoawe0nmQeDac8akiavt8QxFT5JarxhAMSU36pGw/132" width="100%"> 奈何</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eribGKmVpt9iaosyF8Snibalzo9W97MfdUXaQ5NqUVoawe0nmQeDac8akiavt8QxFT5JarxhAMSU36pGw/132" width="100%"> 奈何</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eribGKmVpt9iaosyF8Snibalzo9W97MfdUXaQ5NqUVoawe0nmQeDac8akiavt8QxFT5JarxhAMSU36pGw/132" width="100%"> 奈何</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqRVaBKCTH6woyeuMURJcwPfg5HECjkZ3ic5yBVelUGibdYpWnuf1ic2WafZhxeoicfWJKntiaJ2ugaKxQ/132" width="100%"> A 欧派 ...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注12分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKJwico0KlTuXYnuE6trFVCxib9RHygGSUSBg7PNH3v7ibEvslT0TIVGGAaEbJojug5aZUVqnfR3wlwA/132" width="100%"> 扬中欧派许...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJicd5aiaTgyOricz4EKWtzx7ouQQkichTibjaOpPsfwiauOZpUHrb1d8BTKVZ3ukoOSp6Cibew0ghgNQ10g/132" width="100%"> ABC溜溜...</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/qxEFEwZsRfOI5WEVFF1a53qMp4vccO3TUurnTAwJxibCPxEXibzicHvCel6lmaibBHDxae2j4G72uyoZca7r5W7KOg/132" width="100%"> 无厘头</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注12分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-12分</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eppZl39m2knwN6IZKcibO6VIDAbPCQ0lleFof2exIQwYHEztZ0fJeqAPjJX4lRXnHALT3lsWkQ2q2A/132" width="100%"> 不忘初新</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注16分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eppZl39m2knwN6IZKcibO6VIDAbPCQ0lleFof2exIQwYHEztZ0fJeqAPjJX4lRXnHALT3lsWkQ2q2A/132" width="100%"> 不忘初新</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eppZl39m2knwN6IZKcibO6VIDAbPCQ0lleFof2exIQwYHEztZ0fJeqAPjJX4lRXnHALT3lsWkQ2q2A/132" width="100%"> 不忘初新</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜比利时赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eppZl39m2knwN6IZKcibO6VIDAbPCQ0lleFof2exIQwYHEztZ0fJeqAPjJX4lRXnHALT3lsWkQ2q2A/132" width="100%"> 不忘初新</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eppZl39m2knwN6IZKcibO6VIDAbPCQ0lleFof2exIQwYHEztZ0fJeqAPjJX4lRXnHALT3lsWkQ2q2A/132" width="100%"> 不忘初新</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜墨西哥赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/vAVuY5B2JkYgt0EFxIehF5dahJ7DRIheUn1b1GqP1AMqpUqHuCHk2TVRhruh4KeNQMsIr2Z2wYmH1mlgIKQQgQ/132" width="100%"> 小师傅</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-10分</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRzbRnwFia4xHzbXbD9nLVzvfyPo96H5SPCO6XONWJToLcSr5ZnSFKrn4qzA2TzNtuhia9q3FZeuRQ/132" width="100%"> 一峰</b></span>
+            <span style="float: right;">2018-07-02</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-10分</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqR1uIibq33Kr2HygFHRjFExpO9fFXbpoLcrzavssAqx0LYzVRLuEZ4xQLrBicRUQgFa8erZ6iaoe5icw/132" width="100%"> 宇娟</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜丹麦赢</span>
+            <span style="float: right; color:#009944;">+30分</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNRSMJ7GO8rQx7ZcsMfFeiaftFIKwbnGR1j93KNZ1sx2vupdgTFiahibry80luyibbFx494z9jRAkB1xuzibJYSyADLlb/132" width="100%"> 季利</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">瑞典vs瑞士  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注30分，猜瑞典赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="100%"> 康遴祺</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜丹麦赢</span>
+            <span style="float: right; color:#009944;">+3分</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNQ2D6puZ5jr0yKUaWOrqaiagy9oM7y6s7NkZNzroGKK4Lj5UGaXCx6dIpmMF7aGLO8XWMVB3J9Kldg/132" width="100%"> 王松松</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注10分，猜比利时vs日本平</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs法国  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注30分，猜法国赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">哥伦比亚vs英格兰  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注20分，猜英格兰赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">比利时vs日本  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注40分，猜日本赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注20分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLCA8BAFsV2lWzbCe4YtgkXXOkpWZWClqWiaU93I9yoUTjuYqGnaBr9OozmwyccQLEj8xoerqmcBb3A/132" width="100%"> 徐建明13...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注51分，猜丹麦赢</span>
+            <span style="float: right; color:#009944;">+153分</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/G576p9L1rE5zp68d6QXN2Dk7aAE3Q8hgVHLrGGrMUbj8cnAl6hx8VuoBQricfwJuhffGbpwbmibicS760mNs9wm5rRcA9uBsyTa/132" width="100%"> 卢东华</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜克罗地亚赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM4GkR6FPJw2bEf64OZCXfF7jbR3CJcH7V2YbxR9NA0Gd61A1OesGpMPk5hzWDDKecpcX56gNaD88Q/132" width="100%"> Outsi...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜丹麦赢</span>
+            <span style="float: right; color:#009944;">+6分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/G576p9L1rE7hcY49MPZk5Qm3kErlLfibGmQj7eQJcVYjTjBZEbHXIpLBfWbRSaXIRgpomrHum3rpXLbvbAxcDCScj15kvPjAZ/132" width="100%"> 僵小鱼</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注3分，猜俄罗斯赢</span>
+            <span style="float: right; color:#009944;">+9分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/EiczFEicr1UWV6FUHo8wIfYy1v5OiaGHjib4MxbiafIbIGF0dTQdzfiaXY6icoAZlXX1MRgd4p8e0yXNw39jClPBV9XYA/132" width="100%"> 赵明晶</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜西班牙vs俄罗斯平</span>
+            <span style="float: right; color:#d58512;">-2分</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLT7lWlRfYWLicicYTjiaFeKfYicNMbFHViapRIBC1ypsA87rEkpjjLL8zibowt3LVXcCUeKjKD8icNFaaqw/132" width="100%"> 郭成亮</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLT7lWlRfYWLicicYTjiaFeKfYicNMbFHViapRIBC1ypsA87rEkpjjLL8zibowt3LVXcCUeKjKD8icNFaaqw/132" width="100%"> 郭成亮</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜西班牙赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM6dwn2ep9XT6JRu0p9sWWsN0uKOx09J6mzTA94W6DhoEvXwZmKRibs0B5ulzf5GIrJe0PEI9DCwsZg/132" width="100%"> 康遴祺</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注4分，猜西班牙赢</span>
+            <span style="float: right; color:#d58512;">-4分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/G576p9L1rE5zp68d6QXN2Dk7aAE3Q8hgVHLrGGrMUbj8cnAl6hx8VuoBQricfwJuhffGbpwbmibicS760mNs9wm5rRcA9uBsyTa/132" width="100%"> 卢东华</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜西班牙赢</span>
+            <span style="float: right; color:#d58512;">-2分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJicd5aiaTgyOricz4EKWtzx7ouQQkichTibjaOpPsfwiauOZpUHrb1d8BTKVZ3ukoOSp6Cibew0ghgNQ10g/132" width="100%"> ABC溜溜...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜西班牙赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJicd5aiaTgyOricz4EKWtzx7ouQQkichTibjaOpPsfwiauOZpUHrb1d8BTKVZ3ukoOSp6Cibew0ghgNQ10g/132" width="100%"> ABC溜溜...</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注2分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">巴西vs墨西哥  <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNQ2D6puZ5jr0yKUaWOrqaiagy9oM7y6s7NkZNzroGKK4Lj5UGaXCx6dIpmMF7aGLO8XWMVB3J9Kldg/132" width="100%"> 王松松</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜巴西赢</span>
+            <span style="float: right; color:#d58512;">待开奖</span>
+            </li>
+                         <li>
+            <span class="title">克罗地亚vs丹麦  4:3 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNQ2D6puZ5jr0yKUaWOrqaiagy9oM7y6s7NkZNzroGKK4Lj5UGaXCx6dIpmMF7aGLO8XWMVB3J9Kldg/132" width="100%"> 王松松</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注11分，猜丹麦赢</span>
+            <span style="float: right; color:#009944;">+33分</span>
+            </li>
+                         <li>
+            <span class="title">西班牙vs俄罗斯  4:5 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNQ2D6puZ5jr0yKUaWOrqaiagy9oM7y6s7NkZNzroGKK4Lj5UGaXCx6dIpmMF7aGLO8XWMVB3J9Kldg/132" width="100%"> 王松松</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜西班牙赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                         <li>
+            <span class="title">乌拉圭vs葡萄牙  2:1 <b class="allname"><img src="http://thirdwx.qlogo.cn/mmopen/icTdbqWNOwNQ2D6puZ5jr0yKUaWOrqaiagy9oM7y6s7NkZNzroGKK4Lj5UGaXCx6dIpmMF7aGLO8XWMVB3J9Kldg/132" width="100%"> 王松松</b></span>
+            <span style="float: right;">2018-07-01</span>
+            <div style="clear:both;"></div>            
+            <span>下注1分，猜葡萄牙赢</span>
+            <span style="float: right; color:#d58512;">-1分</span>
+            </li>
+                       
+			</div>
+			</dl>
+
+            </div>
+                    
+		</div>
+			
+		</div>   
+<div class='tips_info' id="lotteryRecord" style="display:none;" onClick="$(this).hide();">
+	<div class="img_bg">
+		<div class="optity">
+		</div>
+		<img class='bg' src="../addons/uber_guess/template/mobile/default/bet/images/tips.png?v=201606090253"/><img class='qiu' src="../addons/uber_guess/template/mobile/default/bet/images/qiu.png?v=201606090253"/>
+	</div>
+	<i ng-click="infoPrize()"></i>
+	<div class='prize'>
+		<div class="auto">
+			<h2>中奖纪录</h2>
+			<dl>
+                    
+    <div style="background-color: #009944; width:100%; height:34px;line-height:34px;">
+    <div class="title" style="text-align: center; width: 24%;">派奖日期</div>
+    <div class="title" style="text-align: center; width: 30%;">球迷昵称</div>
+    <div class="title" style="text-align: center; width: 46%;">领奖情况</div>
+	</div>
+	<table id="cc">
+		    		            <tr>
+            <td>18/07/02</td>
+            <td>宇娟</td>
+            <td>克罗地亚vs丹麦下注10分 猜输赢 待派奖</td>
+        	</tr>
+                        <tr>
+            <td>18/07/02</td>
+            <td>康遴祺</td>
+            <td>克罗地亚vs丹麦下注1分 猜输赢 待派奖</td>
+        	</tr>
+                        <tr>
+            <td>18/07/02</td>
+            <td>徐建明13....</td>
+            <td>克罗地亚vs丹麦下注51分 猜输赢 待派奖</td>
+        	</tr>
+                        <tr>
+            <td>18/07/02</td>
+            <td>Outsi....</td>
+            <td>克罗地亚vs丹麦下注2分 猜输赢 待派奖</td>
+        	</tr>
+                        <tr>
+            <td>18/07/02</td>
+            <td>王松松</td>
+            <td>克罗地亚vs丹麦下注11分 猜输赢 待派奖</td>
+        	</tr>
+                        <tr>
+            <td>18/07/02</td>
+            <td>僵小鱼</td>
+            <td>西班牙vs俄罗斯下注3分 猜输赢 待派奖</td>
+        	</tr>
+            
+        </table>
+</dl>
+
+			
+		</div>
+	</div>
+</div>
+
+<div class='tips_info' id="rule-modal" style="display:none;" onClick="$(this).hide();">
+
+	<div class="img_bg">
+		<div class="optity">
+		</div>
+		<img class='bg' src="../addons/uber_guess/template/mobile/default/bet/images/tips.png?v=201606090253"/><img class='qiu' src="../addons/uber_guess/template/mobile/default/bet/images/qiu.png?v=201606090253"/>
+	</div>
+	<i ng-click="infoI()"></i>
+	<div class='notice'>
+		<div class="auto">
+			<h2>活动说明</h2>
+			<h4>本次活动规则为积分兑换奖品制度，积分越高获奖可能性越大。
+</h4>
+			<h2 style="padding-top:2%">参与规则</h2>
+            <style>.ruletext{overflow:hidden;} .ruletext img {text-align:center;margin:1.25em auto;}.tips_info .notice p{line-height:1.6em;}.ruletext p{line-height:1.6em;margin-bottom:1em;}</style>
+			<div class="ruletext">
+            <p style="white-space: normal;">积分获取途径如下：<br/></p><p style="white-space: normal;">每日签到+10分</p><p style="white-space: normal;">分享给朋友+10分</p><p style="white-space: normal;">朋友受邀参与竞猜+10分</p><p style="white-space: normal;">猜中比赛+3倍投注积分</p><p style="white-space: normal;">本次竞猜活动由欧派家居集团南通分公司举办，所有解释权归欧派南通分公司所有。</p><p style="white-space: normal;"><strong><span style="font-family: 等线; color: rgb(255, 0, 0); font-size: 20px;">积分兑换奖项</span></strong></p><p style="white-space: normal;"><strong><span style="font-family: 等线; font-size: 19px;">一等奖：</span></strong><span style="font-family: 等线;">4</span><span style="font-family: 等线;">999元抵欧派货款免单大奖（订单客户） &nbsp;1名</span></p><p style="white-space: normal;"><strong><span style="font-family: 等线; font-size: 19px;">二等奖：</span></strong><span style="font-family: 等线;">99元购欧派消毒柜特权（订单客户） &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5名</span></p><p style="white-space: normal;"><strong><span style="font-family: 等线; font-size: 19px;">三等奖：</span></strong><span style="font-family: 等线;">1500元欧派现金抵用券（橱柜、衣柜、木门各500元） 10名</span></p><p style="white-space: normal;"><strong><span style="font-family: 等线; font-size: 19px;">四等奖：</span></strong><span style="font-family: 等线;">免费参与价值50元/次欧派线下抽红包活动 &nbsp;&nbsp;&nbsp;&nbsp;30名</span></p><p style="white-space: normal;"><strong><span style="font-family: 等线; font-size: 19px;">参与奖：</span></strong><span style="font-family: 等线;">价值199元欧派精致保鲜碗一个（限量50个，先到先得）&nbsp;</span><span style="font-family: 等线; font-size: 19px;">&nbsp;&nbsp;</span></p><div><span style="font-family: 等线; font-size: 19px;"><br/></span></div><p><br/></p>            </div>
+		</div>
+	</div>
+
+</div>    
+<style>#qr-modal i{position:absolute;top:-35px;right:0px;width:35px;height:35px;color:#fff;background:#C93;border-radius:50%;font-size:12px;font-style:normal;text-align:center;line-height:35px;display:block;z-index:50;}</style>
+    <!-- Modal -->
+    <div class="modal fade" id="qr-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document" style="margin: 100px 6% 20px 6%;"><i>关闭</i>
+        <div class="modal-content" style="">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" style="font-size:16px;text-align:center;">长按识别二维码，可以关注公众号</h4>
+          </div>
+            <div class="modal-body" unselectable="on" style="min-height:300px; -moz-user-select:none; -webkit-user-select:none; text-align:center;" onselectstart="return false;">
+                <br>
+                <img src="" width="80%" style="margin: 0px auto 0px auto;">
+                <br>
+            </div>            
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript">
+$("#qr-modal .modal-dialog i").click(function(){
+    $("#qr-modal").modal("hide");
+})
+</script> <style>
+.service{position:fixed;left:2%;bottom:25%;z-index:99998;display:block;width:38px;padding:5px 2px 4px 4px;text-align:center;white-space:normal;text-decoration:none;_position:absolute;background:#f11010;cursor:pointer;letter-spacing:2px;font-size:12px;line-height:15px;height:auto;border-radius:4px;}
+.service a{color:#fff}
+.float_menu{position:fixed;bottom:0;left:0;z-index:2;width:100%;height:46px;background:#efefef;}
+.float_menu img{display:block;width:100%}
+.float_menu p{margin-top:-1px;margin-bottom:-10px;padding-top:9px;padding-bottom:5px;width:100%;height:36px;background:#efefef;text-align:center;font-family:Arial,"Microsoft yahei";line-height:30px;font-size:.96em;border-top: 2px solid #ddd;}
+.float_menu span{display:inline-block;margin:0 10px;color:#ca2c2b}
+.share{position:fixed;top:0;left:0;z-index:1000;width:100%;height:100%;color:#fff;font:14px/26px "Microsoft Yahei";background:rgba(0,0,0,.8)}.share img{float:right;width:100%;height:auto;margin:10px}
+</style>
+<div class="float_menu">
+    <p>
+                        <span><a style="display:inline-block;color:#fff;background:#f2b809;border-radius:3px;padding:0 10px;" href="./index.php?i=1&c=entry&rid=14&do=index&m=uber_guess">首页</a></span>
+                                        <a style="display:inline-block;color:#fff;background:#284b8d;border-radius:3px;padding:0 10px;" href="./index.php?i=1&c=entry&rid=14&do=prize&m=uber_guess">领奖台</a>
+                                        <span><a style="display:inline-block;color:#fff;background:#04be02;border-radius:3px;padding:0 10px;" href="./index.php?i=1&c=entry&rid=14&do=rank&m=uber_guess">积分榜</a></span>
+                                        <a style="display:inline-block;color:#fff;background:#8a6d3b;border-radius:3px;padding:0 10px;" href="./index.php?i=1&c=entry&rid=14&do=rankguess&m=uber_guess">竞猜榜</a>
+                            </p>
+</div><script>
+document.oncontextmenu=function(e){
+    return false;
+    e.preventDefault();
+};
+function showShare(){
+	    $('body').append('<div class="share" onclick="hideShare()"><img src="../addons/uber_guess/template/mobile/default/images/share.png" /></div>');
+}	
+function hideShare(){
+		$('.share').remove();
+}
+</script>
+<script type="text/javascript">
+wx.error(function (res) {
+    for(var i in res){
+            if (typeof console !== 'undefined' && typeof console.log == 'function') {
+                console.log(i+':'+res[i]);
+            }
+    }
+});
+wx.ready(function () {
+        // 在这里调用 API
+        wx.onMenuShareAppMessage({
+            title: "竞猜世界杯，猜球赢欧派",  // 分享标题
+            desc: "欧派商城7月嗨翻天活动",  // 分享描述
+            link: "https://7002.fmxcx0513.com/app/./index.php?i=1&c=entry&rid=14&do=index&m=uber_guess",  // 分享链接
+            imgUrl: "https://7002.fmxcx0513.com/attachment/images/1/2018/07/bUdma0LkL7Um0TZBda71u32KSK3D60.png",  // 分享图标
+            success: function (res) {
+                // 用户确认分享后执行的回调函数
+                var url = "./index.php?i=1&c=entry&rid=14&do=share&m=uber_guess";
+                    $.ajax
+                    ({
+                        url: url,
+                        type:'POST',
+                        data: {},
+                        dataType:'json',
+                        error: function () {
+							//console.log('网络通讯异常，请稍后再试！');
+                            //alert('网络通讯异常，请稍后再试！');
+                        },
+                        success: function (result) {
+							if(result.success==1){
+                            	alert(result.msg);
+								return false;
+								//setTimeout("gotoindex();",1800);
+							}
+                        }
+                    });
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareTimeline({
+            title: "竞猜世界杯，猜球赢欧派", // 分享标题
+            desc: "欧派商城7月嗨翻天活动", // 分享描述
+            link: "https://7002.fmxcx0513.com/app/./index.php?i=1&c=entry&rid=14&do=index&m=uber_guess", // 分享链接
+            imgUrl: "https://7002.fmxcx0513.com/attachment/images/1/2018/07/bUdma0LkL7Um0TZBda71u32KSK3D60.png", // 分享图标
+            success: function (res) {
+                // 用户确认分享后执行的回调函数
+                    var url = "./index.php?i=1&c=entry&rid=14&do=share&m=uber_guess";
+                    $.ajax
+                    ({
+                        url: url,
+                        type:'POST',
+                        data: {},
+                        dataType:'json',
+                        error: function () {
+                            //alert('网络通讯异常，请稍后再试！');
+                        },
+                        success: function (result) {
+							if(result.success==1){
+                            	alert(result.msg);
+								return false;
+								//setTimeout("gotoindex();",1800);
+							}
+                        }
+                    });
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+function gotoindex(){window.location.href="./index.php?i=1&c=entry&rid=14&do=index&m=uber_guess";}
+</script><script>;</script>
+
+</body>
+</html>		
